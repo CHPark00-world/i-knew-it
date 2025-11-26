@@ -4,10 +4,11 @@ import TodoItem from "./components/TodoItem";
 import { useState, useRef } from "react";
 
 const mockData = [
-  { id: 1, createdDate: new Date().toDateString() },
-  { id: 2, createdDate: new Date().toDateString() },
+  { id: 1, content: "일기 쓰기", createdDate: new Date().toDateString() },
+  { id: 2, content: "과제 하기", createdDate: new Date().toDateString() },
   {
     id: 3,
+    content: "밥 먹기",
     createdDate: new Date().toDateString(),
   },
 ];
@@ -30,7 +31,7 @@ function App() {
     <div>
       <Header onCreate={onCreate} />
       {todo.map((it) => (
-        <TodoItem key={it.id} />
+        <TodoItem key={it.id} content={it.content} />
       ))}
     </div>
   );
