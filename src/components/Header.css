@@ -1,0 +1,20 @@
+.Header {
+  display: flex;
+}
+
+.Header > h1 {
+  flex: 1;
+  font-weight: 400;
+}
+
+.Header button {
+  width: 80px;
+  height: 40px;
+  margin: auto 0;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
