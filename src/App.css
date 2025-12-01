@@ -1,6 +1,18 @@
-body {
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
+@import "./reset.css";
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 100px;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

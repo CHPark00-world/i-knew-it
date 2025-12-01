@@ -64,15 +64,17 @@ function App() {
   return (
     <div>
       <Header inputRef={inputRef} onCreate={onCreate} />
-      {todo.map((it) => (
-        <TodoItem
-          key={it.id}
-          {...it}
-          todo={todo}
-          setTodo={setTodo}
-          onDelete={onDelete}
-        />
-      ))}
+      <div className="todo-list">
+        {todo.map((it) => (
+          <TodoItem
+            key={it.id}
+            {...it}
+            todo={todo}
+            setTodo={setTodo}
+            onDelete={onDelete}
+          />
+        ))}
+      </div>
       <Footer count={count} />
     </div>
   );
