@@ -1,10 +1,22 @@
 .Header {
   display: flex;
+  gap: 20px;
 }
 
 .Header > h1 {
-  flex: 1;
   font-weight: 400;
+}
+
+.Header input {
+  height: 30px;
+  margin: auto 0;
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #1f93ff;
+}
+
+.Header input:focus {
+  outline: none;
 }
 
 .Header button {

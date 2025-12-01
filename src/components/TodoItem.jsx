@@ -1,14 +1,35 @@
 import "./TodoItem.css";
 
-const TodoItem = ({ content, emoji }) => {
+const TodoItem = ({
+  id,
+  content,
+  isDone,
+  createdDate,
+  setTodo,
+  todo,
+  onDelete,
+}) => {
+  const onClickChange = (e) => {
+    setTodo(
+      todo.map((item) => {
+        return item.id === e ? { ...item, isDone: !item.isDone } : item;
+      })
+    );
+  };
+
   return (
     <div className="TodoItem">
-      <div className="img_section">{emoji}</div>
+      <input
+        className="checkbox_section"
+        type="checkbox"
+        onChange={() => onClickChange(id)}
+        checked={isDone}
+      />
       <div className="title_section">{content}</div>
-      <div className="date_section">{new Date().toDateString()}</div>
-      <div className="checkbox_section">
-        <input type="checkbox" />
-      </div>
+      <div className="date_section">{createdDate}</div>
+      <button onClick={() => onDelete(id)} className="btn_section">
+        삭제
+      </button>
     </div>
   );
 };
