@@ -1,0 +1,22 @@
+{
+  "mockTodo": [
+    {
+      "id": 1,
+      "isDone": false,
+      "content": "일기 쓰기",
+      "createdDate": "Mon May 13 2025"
+    },
+    {
+      "id": 2,
+      "isDone": false,
+      "content": "과제 하기",
+      "createdDate": "Fri Jan 12 2024"
+    },
+    {
+      "id": 3,
+      "isDone": true,
+      "content": "밥 먹기",
+      "createdDate": "Mon Dec 01 2025"
+    }
+  ]
+}

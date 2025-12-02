@@ -1,34 +1,19 @@
 import Header from "./components/Header";
 import "./App.css";
 import TodoItem from "./components/TodoItem";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Footer from "./components/Footer";
 
-const mockData = [
-  {
-    id: 1,
-    isDone: false,
-    content: "일기 쓰기",
-    createdDate: new Date("2025-05-13").toDateString(),
-  },
-  {
-    id: 2,
-    isDone: false,
-    content: "과제 하기",
-    createdDate: new Date("2024-01-12").toDateString(),
-  },
-  {
-    id: 3,
-    isDone: true,
-    content: "밥 먹기",
-    createdDate: new Date().toDateString(),
-  },
-];
-
 function App() {
-  const [todo, setTodo] = useState(mockData);
+  const [todo, setTodo] = useState([]);
   const idRef = useRef(4);
   const inputRef = useRef("");
+
+  useEffect(() => {
+    fetch("http://localhost:3000/mockTodo")
+      .then((res) => res.json())
+      .then((data) => setTodo(data));
+  }, []);
 
   let count = 0;
   for (let i = 0; i < todo.length; i++) {
