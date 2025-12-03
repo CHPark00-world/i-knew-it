@@ -8,6 +8,7 @@
 
 .title_section {
   flex: 1;
+  outline: none;
 }
 
 .checkbox_section {
@@ -24,4 +25,16 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+
+.btn_update {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.input_section {
+  outline: none;
 }

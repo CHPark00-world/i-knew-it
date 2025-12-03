@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./TodoItem.css";
 
 const TodoItem = ({
@@ -17,6 +18,23 @@ const TodoItem = ({
     );
   };
 
+  const [isEditing, setIsEditing] = useState(false);
+  const [text, setText] = useState(content);
+
+  const onChangeText = (e) => {
+    setText(e.target.value);
+    console.log(text);
+  };
+
+  const onClickFunc = () => {
+    setTodo(
+      todo.map((item) => {
+        return item.id === id ? { ...item, content: text } : item;
+      })
+    );
+    setIsEditing(false);
+  };
+
   return (
     <div className="TodoItem">
       <input
@@ -25,8 +43,42 @@ const TodoItem = ({
         onChange={() => onClickChange(id)}
         checked={isDone}
       />
-      <div className="title_section">{content}</div>
+      {isEditing ? (
+        <input
+          value={text}
+          onChange={onChangeText}
+          className="title_section"
+          placeholder="내용을 입력하세요."
+        />
+      ) : (
+        <div className="title_section">{content}</div>
+      )}
+
       <div className="date_section">{createdDate}</div>
+      {isEditing ? (
+        <>
+          <div onClick={onClickFunc}>✔️</div>
+          <div
+            onClick={() => {
+              setText(content);
+              setIsEditing(false);
+            }}
+          >
+            ❌
+          </div>
+        </>
+      ) : (
+        <div
+          onClick={() => {
+            setIsEditing(true);
+            setText("");
+          }}
+          className="update_section"
+        >
+          수정
+        </div>
+      )}
+
       <button onClick={() => onDelete(id)} className="btn_section">
         삭제
       </button>
