@@ -1,68 +1,49 @@
-import Header from "./components/Header";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import TodoItem from "./components/TodoItem";
-import { useState, useRef, useEffect } from "react";
-import Footer from "./components/Footer";
+import Header from "./components/header";
+import TodoList from "./components/TodoList";
 
-function App() {
-  const [todo, setTodo] = useState([]);
-  const idRef = useRef(4);
-  const inputRef = useRef("");
+const App = () => {
+  const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
+  const fetchTodos = () => {
     fetch("http://localhost:3000/mockTodo")
       .then((res) => res.json())
-      .then((data) => setTodo(data));
+      .then((data) => {
+        console.log(data);
+        setTodos(data);
+      })
+      .catch((err) => console.log(err));
+  }; // get 요청
+
+  useEffect(() => {
+    fetchTodos();
   }, []);
 
-  let count = 0;
-  for (let i = 0; i < todo.length; i++) {
-    if (todo[i].isDone) {
-      count++;
-    }
-  }
-
-  const onCreate = () => {
-    const inputValue = inputRef.current.value.trim();
-
-    if (!inputValue) {
-      return;
-    } else if (inputValue.length < 4) {
-      alert("4글자 이상 입력해야 합니다 !");
-      return;
-    }
-    const newItem = {
-      id: idRef.current,
-      createdDate: new Date().toDateString(),
-      content: inputValue,
-    };
-
-    setTodo([...todo, newItem]);
-    idRef.current++;
-    inputRef.current.value = "";
-  };
-
-  const onDelete = (id) => {
-    setTodo(todo.filter((it) => it.id !== id));
-  };
+  const addTodo = (content) => {
+    fetch("http://localhost:3000/mockTodo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        content: content,
+        createdDate: new Date().toISOString().split("T")[0],
+        isDone: false,
+      }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        fetchTodos();
+      })
+      .catch((err) => console.log(err));
+  }; //post 요청
 
   return (
-    <div>
-      <Header inputRef={inputRef} onCreate={onCreate} />
-      <div className="todo-list">
-        {todo.map((it) => (
-          <TodoItem
-            key={it.id}
-            {...it}
-            todo={todo}
-            setTodo={setTodo}
-            onDelete={onDelete}
-          />
-        ))}
-      </div>
-      <Footer count={count} />
+    <div className="App">
+      <h1 className="title">Todo List</h1>
+      <Header todos={todos} />
+      <TodoList todos={todos} addTodo={addTodo} />
     </div>
   );
-}
+};
 
 export default App;

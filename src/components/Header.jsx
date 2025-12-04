@@ -1,13 +1,14 @@
 import "./Header.css";
+import React from "react";
 
-function Header({ onCreate, inputRef }) {
+const Header = () => {
   return (
     <div className="Header">
-      <h1>To-do</h1>
-      <input ref={inputRef} placeholder="입력하세요." />
-      <button onClick={onCreate}>+To-do</button>
+      <div className="delete_section">🗑️</div>
+      <div className="date_section">{new Date().toLocaleDateString()}</div>
+      <div className="update_section">✍️</div>
     </div>
   );
-}
+};
 
 export default Header;

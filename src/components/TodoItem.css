@@ -1,40 +1,15 @@
 .TodoItem {
-  border: 2px solid black;
-  border-radius: 10px;
   display: flex;
-  gap: 10px;
-  padding: 15px 20px 15px 0;
+  flex-direction: row;
+  padding-bottom: 30px;
 }
 
-.title_section {
+.text_section {
   flex: 1;
-  outline: none;
+  padding-left: 20px;
 }
 
-.checkbox_section {
-  width: 40px;
-}
-
-.checkbox_section input {
-  width: 25px;
-}
-
-.btn_section {
-  background-color: blue;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-.btn_update {
-  background-color: blue;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-.input_section {
-  outline: none;
+.TodoItem.done .text_section {
+  text-decoration: line-through;
+  color: gray;
 }

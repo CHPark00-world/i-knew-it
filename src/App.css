@@ -7,12 +7,21 @@
 }
 
 body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  padding: 100px;
 }
 
-.todo-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.App {
+  width: 500px;
+}
+
+.title {
+  text-align: center;
+  font-size: 36px;
+  padding-bottom: 20px;
+  text-decoration: underline;
+  text-decoration-color: #1f93ff;
 }
