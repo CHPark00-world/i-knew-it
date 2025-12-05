@@ -1,33 +1,27 @@
 {
   "mockTodo": [
     {
-      "id": "3",
-      "content": "운동하기",
-      "createdDate": "2024-10-18",
-      "isDone": false
-    },
-    {
-      "id": "4",
-      "content": "만두 빚기",
-      "createdDate": "2025-12-03",
-      "isDone": false
-    },
-    {
-      "id": "5",
-      "content": "숙제하기",
-      "createdDate": "2025-11-02",
+      "id": "9bec",
+      "content": "일기 쓰기",
+      "createdDate": "2025-12-04",
       "isDone": true
     },
     {
-      "id": "fa54",
-      "content": "누군갈 사랑하면서",
+      "id": "063c",
+      "content": "리액트 완성하기",
       "createdDate": "2025-12-04",
       "isDone": false
     },
     {
-      "id": "1fd6",
-      "content": "미치도록 그리운 사람아",
+      "id": "af43",
+      "content": "오늘 할일은 없다.",
       "createdDate": "2025-12-04",
+      "isDone": false
+    },
+    {
+      "id": "ba90",
+      "content": "저녁 식사 일찍하기",
+      "createdDate": "2025-12-05",
       "isDone": false
     }
   ]

@@ -2,7 +2,7 @@ import TodoItem from "./TodoItem";
 import "./TodoList.css";
 import React, { useRef } from "react";
 
-const TodoList = ({ todos, addTodo }) => {
+const TodoList = ({ todos, addTodo, onUpdate, onDelete }) => {
   const inputRef = useRef("");
 
   const inputChange = () => {
@@ -26,7 +26,12 @@ const TodoList = ({ todos, addTodo }) => {
         <button onClick={inputChange}>✔️</button>
       </div>
       {todos.map((item) => (
-        <TodoItem key={item.id} {...item} />
+        <TodoItem
+          key={item.id}
+          {...item}
+          onUpdate={onUpdate}
+          onDelete={onDelete}
+        />
       ))}
     </div>
   );

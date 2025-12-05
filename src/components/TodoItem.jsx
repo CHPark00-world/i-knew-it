@@ -1,17 +1,14 @@
 import "./TodoItem.css";
-import React, { useState } from "react";
+import React from "react";
 
-const TodoItem = ({ content, isDone }) => {
-  const [check, setCheck] = useState(isDone);
-
+const TodoItem = ({ id, content, isDone, onUpdate, onDelete }) => {
   return (
-    <div className={check ? "TodoItem done" : "TodoItem"}>
-      <input
-        checked={check}
-        onChange={(e) => setCheck(e.target.checked)}
-        type="checkbox"
-      />
+    <div className={isDone ? "TodoItem done" : "TodoItem"}>
+      <input checked={isDone} onChange={() => onUpdate(id)} type="checkbox" />
       <div className="text_section">{content}</div>
+      <div onClick={() => onDelete(id)} className="delete_section">
+        ❌
+      </div>
     </div>
   );
 };

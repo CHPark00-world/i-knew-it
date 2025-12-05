@@ -13,3 +13,7 @@
   text-decoration: line-through;
   color: gray;
 }
+
+.delete_section {
+  cursor: pointer;
+}
